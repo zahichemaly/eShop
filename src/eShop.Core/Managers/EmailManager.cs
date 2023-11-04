@@ -5,8 +5,8 @@ namespace eShop.Core.Managers
 {
     public class EmailManager
     {
-        private readonly IEmailSender _sender;
-        private readonly IAppLogger<EmailManager> _logger;
+        protected readonly IEmailSender _sender;
+        protected readonly IAppLogger<EmailManager> _logger;
 
         public EmailManager(IEmailSender sender, IAppLogger<EmailManager> logger)
         {
