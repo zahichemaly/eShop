@@ -11,6 +11,11 @@
             this.Value = value;
         }
 
+        /// <summary>
+        /// Creates a new barcode if the length is valid, not empty and not null.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static Barcode? Create(string? value)
         {
             if (string.IsNullOrEmpty(value))

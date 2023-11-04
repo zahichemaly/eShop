@@ -16,6 +16,10 @@ namespace eShop.Core.Entities
             SetQuantity(quantity);
         }
 
+        /// <summary>
+        /// Increments the quantity only if its not negative.
+        /// </summary>
+        /// <param name="quantity"></param>
         public void AddQuantity(int quantity)
         {
             Guard.Against.OutOfRange(quantity, nameof(quantity), 0, int.MaxValue);
