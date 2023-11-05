@@ -23,6 +23,7 @@ namespace eShop.Core.Managers
         {
             var users = await _userRepository.GetAllAsync();
             Guard.Against.Null(users, nameof(users), "Users cannot be null");
+
             var inactiveUsers = users.Where(x => x.LastActive <= DateTime.UtcNow.AddMonths(-1));
             foreach (var user in inactiveUsers)
             {

@@ -1,5 +1,7 @@
-﻿using eShop.Core.Entities;
+﻿using Ardalis.GuardClauses;
+using eShop.Core.Entities;
 using eShop.Core.Exceptions;
+using eShop.Core.Extensions;
 using eShop.Core.Interfaces;
 
 namespace eShop.Core.Managers
