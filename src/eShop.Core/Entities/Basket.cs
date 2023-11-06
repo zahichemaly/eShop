@@ -1,24 +1,23 @@
-﻿namespace eShop.Core.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace eShop.Core.Entities
 {
     public class Basket : BaseEntity
     {
         public string BuyerId { get; private set; }
-        private readonly List<BasketItem> _items = new List<BasketItem>();
-
-        /// <summary>
-        /// Items in the basket, which are immutable.
-        /// </summary>
-        public IReadOnlyCollection<BasketItem> Items => _items.AsReadOnly();
+        public List<BasketItem> Items { get; set; }
 
         /// <summary>
         /// The total quantity of items in the basket.
         /// </summary>
-        public int TotalItems => _items.Sum(i => i.Quantity);
+        [JsonIgnore]
+        public int TotalItems => Items.Sum(i => i.Quantity);
 
 
         public Basket(string buyerId): base()
         {
             BuyerId = buyerId;
+            Items = new List<BasketItem>();
         }
 
         /// <summary>
@@ -32,7 +31,7 @@
         {
             if (!Items.Any(i => i.CatalogItemId == catalogItemId))
             {
-                _items.Add(new BasketItem(catalogItemId, quantity, unitPrice));
+                Items.Add(new BasketItem(catalogItemId, quantity, unitPrice));
                 return;
             }
             var existingItem = Items.First(i => i.CatalogItemId == catalogItemId);
@@ -44,7 +43,7 @@
         /// </summary>
         public void RemoveEmptyItems()
         {
-            _items.RemoveAll(i => i.Quantity == 0);
+            Items.RemoveAll(i => i.Quantity == 0);
         }
 
         /// <summary>
@@ -62,7 +61,7 @@
         /// <returns></returns>
         public decimal GetTotalPrice()
         {
-            return _items.Sum(x => x.GetTotalPrice());
+            return Items.Sum(x => x.GetTotalPrice());
         }
     }
 }
