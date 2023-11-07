@@ -1,4 +1,3 @@
-using eShop.Core.Entities;
 using eShop.Core.Interfaces;
 using eShop.Infrastructure.Data;
 using MongoDbGenericRepository;
@@ -35,3 +34,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

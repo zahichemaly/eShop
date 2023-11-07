@@ -20,9 +20,9 @@ namespace eShop.Infrastructure.Data
             return entity;
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task DeleteAsync(string id)
         {
-            await _collection.DeleteOneAsync(x => x.Id == entity.Id);
+            await _collection.DeleteOneAsync(x => x.Id == id);
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
