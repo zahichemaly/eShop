@@ -29,11 +29,6 @@ namespace eShop.Core.Managers
 
         private static bool IsValidEmail(string email)
         {
-            if (string.IsNullOrWhiteSpace(email))
-            {
-                return false;
-            }
-
             try
             {
                 // Use MailAddress class to validate email format

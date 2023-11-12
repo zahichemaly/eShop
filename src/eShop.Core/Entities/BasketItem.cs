@@ -9,7 +9,7 @@ namespace eShop.Core.Entities
         public int CatalogItemId { get; private set; }
         public int BasketId { get; private set; }
 
-        public BasketItem(int catalogItemId, int quantity, decimal unitPrice)
+        public BasketItem(int catalogItemId, int quantity, decimal unitPrice): base()
         {
             CatalogItemId = catalogItemId;
             UnitPrice = unitPrice;
