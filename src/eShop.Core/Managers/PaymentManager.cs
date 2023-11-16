@@ -37,7 +37,7 @@ namespace eShop.Core.Managers
 
             // Try to get hold off the card and check the amount
             var cardHoldAmount = _paymentService.GetHoldOfCard(order.CreditCard);
-            if (amountToPay <= cardHoldAmount)
+            if (amountToPay > cardHoldAmount)
             {
                 throw new CreditCardInsufficientAmountException(amountToPay);
             }
